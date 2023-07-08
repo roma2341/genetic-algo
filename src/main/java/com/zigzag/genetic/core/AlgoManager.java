@@ -2,6 +2,7 @@ package com.zigzag.genetic.core;
 
 import com.zigzag.genetic.core.model.GeneticContext;
 import com.zigzag.genetic.core.model.Population;
+import com.zigzag.genetic.pipes.BreedingPipe;
 import com.zigzag.genetic.pipes.FitnessPipe;
 import com.zigzag.genetic.pipes.GeneratePopulationPipe;
 import com.zigzag.genetic.pipes.RepopulationPipe;
@@ -13,10 +14,11 @@ public class AlgoManager {
     private GeneratePopulationPipe generatePopulationPipe = new GeneratePopulationPipe();
     private FitnessPipe fitnessPipe = new FitnessPipe();
     private RepopulationPipe repopulationPipe = new RepopulationPipe();
+    private BreedingPipe breedingPipe = new BreedingPipe();
 
     public void nextGeneration(){
         // 1. Init initial population
-        if(context.hasNoPopulations()){
+        if(context.hasNoPopulation()){
             generatePopulationPipe.execute(context);
             return;
         }
@@ -24,6 +26,7 @@ public class AlgoManager {
         // 3.1. Pick best populations
         // 3.2  Produce children
         fitnessPipe.execute(context);
+        breedingPipe.execute(context);
         repopulationPipe.execute(context);
     }
 }

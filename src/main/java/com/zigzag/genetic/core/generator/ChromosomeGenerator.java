@@ -6,6 +6,6 @@ import com.zigzag.genetic.core.model.GeneticContext;
 public class ChromosomeGenerator {
     public Chromosome generate(GeneticContext context){
         var chromosome = new Chromosome();
-        chromosome.getGenes().
+        return chromosome;
     }
 }

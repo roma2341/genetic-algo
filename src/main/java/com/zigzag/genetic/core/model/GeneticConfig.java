@@ -6,5 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class GeneticConfig {
-    private int populationSize = 0;
+    private int populationMaxSize = 100;
+    private int howManyParentPairsInGeneration = 5;
 }

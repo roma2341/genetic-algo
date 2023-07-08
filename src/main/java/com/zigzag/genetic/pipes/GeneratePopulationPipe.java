@@ -5,10 +5,14 @@ import com.zigzag.genetic.core.model.Chromosome;
 import com.zigzag.genetic.core.model.GeneticContext;
 import com.zigzag.genetic.core.model.Population;
 import com.zigzag.genetic.pipes.api.GeneticPipe;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 public class GeneratePopulationPipe implements GeneticPipe {
 
     protected ChromosomeGenerator chromosomeGenerator = new ChromosomeGenerator();
@@ -20,6 +24,8 @@ public class GeneratePopulationPipe implements GeneticPipe {
                     chromosomeGenerator.generate(context)
             );
         }
-        context.setPopulationList();
+        var population = new Population();
+        population.setChromosomes(chromosomes);
+        context.setPopulation(population);
     }
 }
