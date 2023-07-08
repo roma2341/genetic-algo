@@ -11,13 +11,10 @@ import java.util.stream.Collectors;
 public class RepopulationPipe implements GeneticPipe {
     @Override
     public void execute(GeneticContext context) {
-        var maxPopulationSize = context.getConfig().getPopulationMaxSize();
-        List<Chromosome> chromosomes = context.getChromosomes();
-        int maxChromosomesStatyingAlive = maxPopulationSize * howManyChromosomesStayAliveForNextPopulation;
-        var newGenerationChromosomes = context.getLimitedChromosomesListSortedByFitness(maxChromosomesStatyingAlive);
-        while(newGenerationChromosomes.size() < howManyChromosomesStayAliveForNextPopulation) {
-            newGenerationChromosomes.add(new Chromosome());
-        }
-
+        var maxPopulationSize = context.config().populationMaxSize();
+        List<Chromosome> chromosomes = context.chromosomes();
+        var newGenerationChromosomes = context.getLimitedChromosomesListSortedByFitness(maxPopulationSize);
+        var stayAliveChromosomes =  chromosomes.stream().limit(maxPopulationSize).collect(Collectors.toList());
+        context.chromosomes(stayAliveChromosomes);
     }
 }

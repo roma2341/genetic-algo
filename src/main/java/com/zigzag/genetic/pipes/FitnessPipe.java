@@ -10,8 +10,8 @@ public class FitnessPipe implements GeneticPipe {
     FitnessCalculator fitnessCalculator = new FitnessCalculator();
     @Override
     public void execute(GeneticContext context) {
-        context.getChromosomes().forEach(c -> {
-            c.setFitness(fitnessCalculator.calculate(c));
+        context.chromosomes().forEach(c -> {
+            c.fitness(fitnessCalculator.calculate(c));
         });
     }
 }

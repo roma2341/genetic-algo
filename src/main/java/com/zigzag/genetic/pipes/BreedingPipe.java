@@ -9,7 +9,7 @@ public class BreedingPipe implements GeneticPipe {
     ChromosomeBreeder chromosomeBreeder = new ChromosomeBreeder();
     @Override
     public void execute(GeneticContext context) {
-        var howManyParentPairs = context.getConfig().getHowManyParentPairsInGeneration();
+        var howManyParentPairs = context.config().howManyParentPairsInGeneration();
         var parents = context.getLimitedChromosomesListSortedByFitness(howManyParentPairs);
         for(int i = 0; i < parents.size(); i+=2){
             if(parents.size() - 1 == i){//1
@@ -19,8 +19,8 @@ public class BreedingPipe implements GeneticPipe {
             var father = parents.get(i + 1);
 
             var childrenTuple = chromosomeBreeder.breed(mother,father);
-            context.getChromosomes().add(childrenTuple.getFirst());
-            context.getChromosomes().add(childrenTuple.getSecond());
+            context.chromosomes().add(childrenTuple.getFirst());
+            context.chromosomes().add(childrenTuple.getSecond());
         }
     }
 }

@@ -1,13 +1,7 @@
 package com.zigzag.genetic.core;
 
 import com.zigzag.genetic.core.model.GeneticContext;
-import com.zigzag.genetic.core.model.Population;
-import com.zigzag.genetic.pipes.BreedingPipe;
-import com.zigzag.genetic.pipes.FitnessPipe;
-import com.zigzag.genetic.pipes.GeneratePopulationPipe;
-import com.zigzag.genetic.pipes.RepopulationPipe;
-
-import java.util.List;
+import com.zigzag.genetic.pipes.*;
 
 public class AlgoManager {
     private GeneticContext context = new GeneticContext();
@@ -15,6 +9,7 @@ public class AlgoManager {
     private FitnessPipe fitnessPipe = new FitnessPipe();
     private RepopulationPipe repopulationPipe = new RepopulationPipe();
     private BreedingPipe breedingPipe = new BreedingPipe();
+    private LoggingPipe loggingPipe = new LoggingPipe();
 
     public void nextGeneration(){
         // 1. Init initial population
@@ -28,5 +23,7 @@ public class AlgoManager {
         fitnessPipe.execute(context);
         breedingPipe.execute(context);
         repopulationPipe.execute(context);
+        fitnessPipe.execute(context);
+        loggingPipe.execute(context);
     }
 }
