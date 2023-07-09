@@ -9,7 +9,7 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Accessors(fluent = true)
-@AllArgsConstructor
+@AllArgsConstructor(staticName = "of")
 public class IntegerGene implements Gene<Integer> {
     protected Integer allele;
 }

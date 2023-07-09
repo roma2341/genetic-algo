@@ -2,17 +2,18 @@ package com.zigzag.genetic.libs.tree;
 
 import com.zigzag.genetic.libs.tree.api.Tree;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.util.Iterator;
-import java.util.Objects;
 
 import static java.lang.String.format;
 
 @Getter
 @Setter
 @Accessors(fluent = true)
+@NoArgsConstructor(staticName = "of")
 public class BinaryTree<T> implements Tree<BinaryTree<T>, T> {
     protected BinaryTree<T> left;
     protected BinaryTree<T> right;
@@ -20,7 +21,11 @@ public class BinaryTree<T> implements Tree<BinaryTree<T>, T> {
 
     @Override
     public int childCount() {
-        return 0;
+        if (left != null) {
+            return left != null ? 2 : 1;
+        } else {
+            return right != null ? 1 : 0;
+        }
     }
 
     @Override

@@ -9,7 +9,7 @@ import java.util.Objects;
 import static java.util.Objects.requireNonNull;
 
 public class TreeNodeBreadthFirstIterator<V, T extends Tree<T, V>> implements Iterator<T> {
-    ArrayDeque<T> queue = new ArrayDeque();
+    ArrayDeque<T> queue = new ArrayDeque<>();
 
     public TreeNodeBreadthFirstIterator(T tree){
         requireNonNull(tree, "Tree must be not nulll");
@@ -17,7 +17,7 @@ public class TreeNodeBreadthFirstIterator<V, T extends Tree<T, V>> implements It
     }
     @Override
     public boolean hasNext() {
-       return queue.isEmpty();
+       return !queue.isEmpty();
     }
 
     @Override

@@ -31,7 +31,7 @@ public class ChromosomeBreeder {
        var fatherGenes = father.genes();
        var childGenes = motherGenes.copy();
        childGenes.right(fatherGenes.right());
-       Chromosome childChromosome = new Chromosome();
+       Chromosome childChromosome = Chromosome.of();
        childChromosome.genes(childGenes);
        return childChromosome;
     }

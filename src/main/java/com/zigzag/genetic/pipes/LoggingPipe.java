@@ -13,7 +13,10 @@ public class LoggingPipe implements GeneticPipe {
                         """
                                 Generation:%d \n
                                 Best fitness:%d \n
-                                """, context.currentGeneration(),
-                        context.bestFitness()));
+                                Population size:%d
+                                """,
+                        context.currentGeneration(),
+                        context.bestFitness(),
+                        context.populationSize()));
     }
 }

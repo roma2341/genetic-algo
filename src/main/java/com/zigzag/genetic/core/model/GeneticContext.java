@@ -22,10 +22,17 @@ public class GeneticContext {
         return chromosomes == null;
     }
 
+    public int populationSize(){
+        return chromosomes == null ? 0 : chromosomes.size();
+    }
+
     public List<Chromosome> getLimitedChromosomesListSortedByFitness(int maxItems){
         return chromosomes.stream()
                 .sorted(Comparator.comparing(o -> o.fitness()))
                 .limit(maxItems)
                 .collect(Collectors.toList());
+    }
+    public void incrementGeneration(){
+        currentGeneration++;
     }
 }

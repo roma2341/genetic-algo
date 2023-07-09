@@ -25,5 +25,6 @@ public class AlgoManager {
         repopulationPipe.execute(context);
         fitnessPipe.execute(context);
         loggingPipe.execute(context);
+        context.incrementGeneration();
     }
 }
